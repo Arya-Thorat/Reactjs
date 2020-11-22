@@ -31,6 +31,7 @@ class Main extends Component {
   //       })
   //   }
   render(){
+    //the below two components are functional components defined within a class component's render method
     const HomePage=()=>{
       return (
         <HomeComponent dish={this.state.dishes.filter((dish) => dish.featured)[0]}
@@ -39,6 +40,15 @@ class Main extends Component {
       )
     }
 
+    const DishWithId = (props) => {
+      const {match,}=props //important comma fro destructuring into single
+      return(
+      <DishDetail dish={this.state.dishes.filter(dish =>dish.id === parseInt(match.params.dishId,10))[0]}
+      comments={this.state.comments.filter(comment => comment.dishId === parseInt(match.params.dishId,10))} />
+      );
+    }
+  
+
     return (
       <div>
         <HeaderComponent/>
@@ -46,6 +56,7 @@ class Main extends Component {
         <Route path="/home" component={HomePage}/>
         {/* this above method of calling a component wont pass props to that comp */}
         <Route exact path="/menu" component={() => <MenuComponent dishes={this.state.dishes}/>}/>
+        <Route exact path="/menu/:dishId" component={DishWithId}/>
         <Route exact path='/contactus' component={Contact} />
         <Redirect to="/home"/>
         </Switch>
