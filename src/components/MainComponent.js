@@ -46,8 +46,8 @@ class Main extends Component {
         <Route path="/home" component={HomePage}/>
         {/* this above method of calling a component wont pass props to that comp */}
         <Route exact path="/menu" component={() => <MenuComponent dishes={this.state.dishes}/>}/>
-        <Redirect to="/home"/>
         <Route exact path='/contactus' component={Contact} />
+        <Redirect to="/home"/>
         </Switch>
         <FooterComponent/>
         
