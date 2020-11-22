@@ -24,7 +24,7 @@ class Contact extends Component{
         this.handleInputChange=this.handleInputChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         //this.handleBlur = this.handleBlur.bind(this);
-        
+        //no need to bind the handleBlur method as it is an arrow function anyway.
     }
 
     handleBlur = (field) => (evt) => {
@@ -129,7 +129,11 @@ class Contact extends Component{
                                         placeholder="First Name"
                                         value={this.state.firstname}
                                         onChange={this.handleInputChange}
-                                        onBlur={this.handleBlur('firstname')} />
+                                        onBlur={this.handleBlur('firstname')}
+                                        valid={errors.firstname === ''}
+                                        invalid={errors.firstname !== ''} />
+                                        {/* //valid and invalid will mark in red if error is above conditions
+                                        //and if invalid is true formfeedback will be executed */}
                                         <FormFeedback>{errors.firstname}</FormFeedback>
                                 </Col>
                             </FormGroup>
@@ -140,7 +144,9 @@ class Contact extends Component{
                                         placeholder="Last Name"
                                         value={this.state.lastname}
                                         onChange={this.handleInputChange}
-                                        onBlur={this.handleBlur('lastname')} />
+                                        onBlur={this.handleBlur('lastname')} 
+                                        valid={errors.lastname === ''}
+                                        invalid={errors.lastname !== ''}/>
                                         <FormFeedback>{errors.lastname}</FormFeedback>
                                 </Col>                        
                             </FormGroup>
@@ -151,7 +157,9 @@ class Contact extends Component{
                                         placeholder="Tel. number"
                                         value={this.state.telnum}
                                         onChange={this.handleInputChange}
-                                        onBlur={this.handleBlur('telnum')} />
+                                        onBlur={this.handleBlur('telnum')}
+                                        valid={errors.telnum === ''}
+                                        invalid={errors.telnum !== ''} />
                                         <FormFeedback>{errors.telnum}</FormFeedback>
                                 </Col>
                             </FormGroup>
@@ -162,7 +170,9 @@ class Contact extends Component{
                                         placeholder="Email"
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
-                                        onBlur={this.handleBlur('email')} />
+                                        onBlur={this.handleBlur('email')}
+                                        valid={errors.email === ''}
+                                        invalid={errors.email !== ''} />
                                         <FormFeedback>{errors.email}</FormFeedback>
                                 </Col>
                             </FormGroup>
